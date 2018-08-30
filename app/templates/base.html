@@ -8,15 +8,14 @@
     {% else %}
     <title>Welcome to Wheels</title>
     {% endif %}
-
-    
-
     {{ bootstrap.load_css() }}
+    {{ moment.include_jquery() }}
+    {{ moment.include_moment() }}
 </head>
 
 <body>
 <main class="container">
-        {% if moment %}moment loaded{% endif %}
+        
     <div>
         Wheels:
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
