@@ -1,0 +1,1 @@
+{{ moment.include_moment("/app/static/js/moment-with-locales.min.js") }}
