@@ -31,8 +31,6 @@ def index():
 
     return render_template('index.html', title='Home', form=form, pagination=pagination, posts = pagination.items)
 
-
-
 @bp.route('/user/<username>')
 @login_required
 def user(username):
@@ -95,3 +93,8 @@ def explore():
     pagination = Post.query.order_by(Post.timestamp.desc()).paginate(page, current_app.config['POSTS_PER_PAGE'], False)
 
     return render_template('index.html', title='Explore', pagination=pagination, posts=pagination.items)
+
+
+@bp.route('/wheels', methods=['GET', 'POST'])
+def wheels():
+    return render_template('wheels.html', title='Wheels')
