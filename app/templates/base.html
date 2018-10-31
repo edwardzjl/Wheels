@@ -9,26 +9,26 @@
     <title>Welcome to Wheels</title>
     {% endif %}
 
-    {{ moment.include_moment("/app/static/js/moment-with-locales.min.js") }}
+    {{ moment.include_moment(local_js=url_for('static', filename="js/moment-with-locales.min.js")) }}
 
     {{ bootstrap.load_css() }}
 </head>
 
 <body>
 <main class="container">
-        {% if moment %}moment loaded{% endif %}
+
     <div>
         Wheels:
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
-                    {{ render_nav_item('index', 'Home') }}
+                    {{ render_nav_item('main.index', 'Home') }}
                     {% if current_user.is_anonymous %}
-                    {{ render_nav_item('login', 'Login') }}
+                    {{ render_nav_item('auth.login', 'Login') }}
                     {% else %}
-                    {{ render_nav_item('explore', 'Explore') }}
-                    {{ render_nav_item('user', 'Profile', username=current_user.username) }}
-                    {{ render_nav_item('logout', 'Logout') }}
+                    {{ render_nav_item('main.explore', 'Explore') }}
+                    {{ render_nav_item('main.user', 'Profile', username=current_user.username) }}
+                    {{ render_nav_item('auth.logout', 'Logout') }}
                     {% endif %}
                 </ul>
             </div>
@@ -48,6 +48,7 @@
     {% block app_content %}
     
     {% endblock %}
+
 </main>
 {{ bootstrap.load_js() }}
 </body>

@@ -1,6 +1,9 @@
 import os
 basedir = os.path.abspath(os.path.dirname(__file__))
 
+basedir = os.path.abspath(os.path.dirname(__file__))
+load_dotenv(os.path.join(basedir, '.env'))
+
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guess'
 
@@ -17,4 +20,4 @@ class Config(object):
     ADMINS = ['jameszhou2108@hotmail.com']
 
     POSTS_PER_PAGE = 3
-    
+
